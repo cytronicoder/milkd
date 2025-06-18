@@ -42,22 +42,22 @@
       });
     });
 
-    let easterEggShown = false;
+    let milked = false;
 
     function revealSecret() {
-      if (easterEggShown) return;
-      easterEggShown = true;
+      if (milked) return;
+      milked = true;
 
-      const teaser = document.createElement("div");
-      teaser.classList.add("lore");
-      teaser.innerHTML = `
+      const milk = document.createElement("div");
+      milk.classList.add("lore");
+      milk.innerHTML = `
       <p style="font-size: 0.75rem; font-family: 'Press Start 2P'; color: #fff; margin-top: 2rem; opacity: 0.5;">
         we're all familiar with the dad who went out for milk and never came back. 
         <br />
         <br />
         this is a game about that dad.
       </p>`;
-      document.querySelector(".teaser").appendChild(teaser);
+      document.querySelector(".teaser").appendChild(milk);
     }
 
     const consoleEasterEgg = {
@@ -68,7 +68,7 @@
       },
     };
 
-    if (!easterEggShown) {
+    if (!milked) {
       Object.defineProperty(window.console, "milk", {
         get: () => consoleEasterEgg.milk,
         configurable: true,
@@ -76,6 +76,6 @@
     }
 
     console.log("%cI see we have some prying eyes.", "color: #3498db");
-    console.log("%cType 'console.milk' to find out more.", "color: #fff");
+    console.log("%cType console.milk to find out more.", "color: #fff");
   </script>
 </html>
