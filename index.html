@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>milkd</title>
+    <meta
+      name="description"
+      content="A game about stocking milk in your fridge."
+    />
+    <meta name="keywords" content="milkd, game, milk, fridge, stocking" />
+    <meta name="author" content="Zeyu Yao" />
+    <meta name="theme-color" content="#3498db" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" href="/assets/pple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="teaser">
+      <h1>milkd</h1>
+      <p class="tagline">a game about stocking milk in your fridge.</p>
+
+      <div class="btn">coming soon</div>
+    </section>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+  <script>
+    const jsConfetti = new JSConfetti();
+
+    document.querySelector(".btn").addEventListener("click", () => {
+      jsConfetti.addConfetti({
+        emojis: ["🥛", "🧊", "👨", "🏪", "⏳", "💔"],
+        emojiSize: 100,
+        confettiNumber: 25,
+      });
+    });
+
+    let easterEggShown = false;
+
+    function revealSecret() {
+      if (easterEggShown) return;
+      easterEggShown = true;
+
+      const teaser = document.createElement("div");
+      teaser.classList.add("lore");
+      teaser.innerHTML = `
+      <p style="font-size: 0.75rem; font-family: 'Press Start 2P'; color: #fff; margin-top: 2rem; opacity: 0.5;">
+        we're all familiar with the dad who went out for milk and never came back. 
+        <br />
+        <br />
+        this is a game about that dad.
+      </p>`;
+      document.querySelector(".teaser").appendChild(teaser);
+    }
+
+    const consoleEasterEgg = {
+      get milk() {
+        revealSecret();
+        delete window.console.milk;
+        return "🥛";
+      },
+    };
+
+    if (!easterEggShown) {
+      Object.defineProperty(window.console, "milk", {
+        get: () => consoleEasterEgg.milk,
+        configurable: true,
+      });
+    }
+
+    console.log("%cI see we have some prying eyes.", "color: #3498db");
+    console.log("%cType 'console.milk' to find out more.", "color: #fff");
+  </script>
+</html>

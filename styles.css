@@ -1,0 +1,64 @@
+:root {
+  --brand-blue: #3498db;
+  --brand-light: #f9f9f9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: var(--brand-blue);
+  color: var(--brand-light);
+  line-height: 1.5;
+}
+
+.teaser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.teaser h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 2.5rem;
+  color: var(--brand-dark);
+}
+
+.teaser p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--brand-light);
+  color: var(--brand-blue);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.lore {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 2rem;
+  }
+}
